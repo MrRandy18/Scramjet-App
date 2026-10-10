@@ -1,7 +1,7 @@
 {
-  "name": "knight-os",
+  "name": "moonlight-os",
   "version": "2.0.0",
-  "description": "KNIGHT-OS desktop browser with Scramjet and a same-host Wisp relay",
+  "description": "MOONLIGHT OS desktop browser with Scramjet and a same-host Wisp relay",
   "type": "module",
   "engines": {
     "node": ">=22"
