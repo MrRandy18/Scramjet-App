@@ -1,3 +1,4 @@
+import { basicRoute } from "./basic.js";
 import { createServer } from "node:http";
 import { fileURLToPath } from "url";
 import { hostname } from "node:os";
@@ -34,6 +35,9 @@ const fastify = Fastify({
 			});
 	},
 });
+
+fastify.get("/api/basic", basicRoute);
+fastify.get("/health", async () => ({ status: "ok", app: "KNIGHT-OS" }));
 
 fastify.register(fastifyStatic, {
 	root: publicPath,
@@ -90,7 +94,7 @@ let port = parseInt(process.env.PORT || "");
 
 if (isNaN(port)) port = 8080;
 
-fastify.listen({
-	port: port,
-	host: "0.0.0.0",
-});
+export default fastify;
+if (process.env.NODE_ENV !== "test") {
+  fastify.listen({ port, host: "0.0.0.0" }).catch(error => { console.error(error); process.exit(1); });
+}
