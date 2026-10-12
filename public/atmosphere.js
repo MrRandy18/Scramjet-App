@@ -18,7 +18,11 @@ void main() {
 }`;
 
 const fragment = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
 varying vec2 uv;
 uniform sampler2D artwork;
 uniform vec2 resolution;
@@ -33,6 +37,15 @@ void main() {
     ? vec2(1.0, imageRatio / viewportRatio)
     : vec2(viewportRatio / imageRatio, 1.0);
   p = (p - 0.5) * fit * 0.974 + 0.5 + pointer * 0.003;
+  // A ten-second breath gently expands the moon and its surrounding halo.
+  float breath = 0.5 + 0.5 * sin(time * 0.6283185 - 1.5707963);
+  vec2 moonCenter = vec2(0.504, 0.242);
+  vec2 moonOffset = p - moonCenter;
+  float moonRadius = length(moonOffset * vec2(imageRatio, 1.0));
+  float moonMask = 1.0 - smoothstep(0.13, 0.23, moonRadius);
+  p = moonCenter + moonOffset / (1.0 + moonMask * breath * 0.018);
+  float cloudBand = smoothstep(0.25, 0.34, p.y) * (1.0 - smoothstep(0.46, 0.495, p.y));
+  p.x += cloudBand * (1.0 - moonMask) * (sin(time * 0.12) * 0.002 + sin(p.y * 22.0 + time * 0.16) * 0.001);
   float water = smoothstep(0.494, 0.65, p.y);
   float depth = max(0.0, p.y - 0.48);
   float ripples = sin(p.y * 112.0 - time * 0.85 + sin(p.x * 13.0));
@@ -43,8 +56,10 @@ void main() {
   float reflection = exp(-pow((p.x - 0.5) / (0.02 + depth * 0.4), 2.0));
   float shimmer = sin(p.y * 210.0 - time * 1.1 + sin(p.x * 56.0)) * 0.018;
   color += vec3(0.25, 0.66, 0.85) * shimmer * reflection * water;
-  float glow = exp(-length((p - vec2(0.5, 0.242)) * vec2(7.0, 4.0)) * 2.0);
-  color += vec3(0.01, 0.028, 0.04) * glow * (0.5 + 0.5 * sin(time * 0.35));
+  float glow = exp(-moonRadius * 10.0);
+  color *= 1.0 + moonMask * (breath - 0.5) * 0.055;
+  color += vec3(0.012, 0.043, 0.068) * glow * (0.3 + breath * 0.7);
+  color += vec3(0.004, 0.014, 0.023) * reflection * water * breath;
   gl_FragColor = vec4(color, 1.0);
 }`;
 

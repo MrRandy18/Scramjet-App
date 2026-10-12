@@ -503,3 +503,15 @@ html[data-motion=off] *,html[data-motion=off] *::before,html[data-motion=off] *:
   .ocean-canvas { display:none!important; }
   .dock-button:hover,.dock-button:has(+.dock-button:hover),.dock-button:hover+.dock-button { transform:none; }
 }
+
+/* Quiet hotel-inspired typography, with original Moonlight lettering. */
+:root { --display-font:Georgia,'Times New Roman',serif; }
+.welcome-content h1 { font-family:var(--display-font); font-weight:400; letter-spacing:clamp(2px,.55vw,8px); }
+.welcome-brand,.wordmark b { font-family:var(--display-font); font-weight:600; }
+.welcome-os { font-family:var(--display-font); }
+.enter-button { font-family:var(--display-font); font-size:14px; }
+.new-tab-page h2,.panel-content h2 { font-family:var(--display-font); font-weight:400; letter-spacing:-.5px; }
+.desktop-day { font-family:var(--display-font); font-size:16px; }
+.tab-select .tab-number { flex-shrink:0; font-family:var(--display-font); font-size:9px; font-variant-numeric:tabular-nums; letter-spacing:.8px; padding:3px 5px; border:1px solid #b6dfff26; border-radius:4px; color:#95b6cd; background:#04132355; }
+.tab.active .tab-number { border-color:rgba(var(--accent-rgb),.4); color:var(--accent); box-shadow:0 0 9px rgba(var(--accent-rgb),.07); }
+@media(max-width:540px) { .welcome-content h1 { font-size:clamp(28px,7.9vw,42px); letter-spacing:2px; } .desktop-day { font-size:14px; } .enter-button { font-size:13px; } .tab-select { gap:6px; padding-left:8px; } }

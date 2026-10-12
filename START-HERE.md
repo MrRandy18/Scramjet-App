@@ -1,78 +1,65 @@
-# Move MOONLIGHT OS to your existing Render website
+# Install the Moonlight OS design upgrade
 
-You already have GitHub and Render connected. This package replaces the plain Scramjet demo with the redesigned MOONLIGHT OS desktop.
+This ZIP contains your updated project for your existing website:
+https://night-window.onrender.com
 
-Your address stays: https://night-window.onrender.com
+## Update your site
 
-## Do this
+1. Download and extract MOONLIGHT-OS-Render.zip.
+2. Open https://github.com/MrRandy18/Scramjet-App.
+3. Upload the contents of the extracted MOONLIGHT-OS-Render folder into the root of your repository. Replace matching files. Upload the files inside the folder, not the ZIP or the outer folder itself.
+4. Include public, src, package.json, package-lock.json, Dockerfile, README.md, LICENSE, and START-HERE.md. The new public/atmosphere.js is required for the animated ocean.
+5. Commit the changes with a message such as Upgrade Moonlight OS design and animations.
+6. Wait for your Render service to finish deploying. If it does not start automatically, choose Manual Deploy, then Deploy latest commit.
+7. Open your site and press Ctrl+Shift+R to refresh its files.
 
-1. Extract `MOONLIGHT-OS-Render.zip` on your computer. Open the extracted folder.
-2. Open https://github.com/MrRandy18/Scramjet-App in your browser. Stay on the main page of the repository, not inside the public folder.
-3. Click **Add file → Upload files**.
-4. Drag the files and folders from INSIDE the extracted folder into GitHub. Include `public`, `src`, `package.json`, `package-lock.json`, and `Dockerfile`. Do not upload the ZIP or the outer folder itself. If your browser refuses folders, use the folder upload instructions below.
-5. Enter `Install MOONLIGHT OS desktop` as the commit message and click **Commit changes** on the main branch.
-6. Open your Night-Window service on Render. It normally deploys automatically. Otherwise click **Manual Deploy → Deploy latest commit**.
-7. Wait for **Live**, then open https://night-window.onrender.com and press Ctrl+Shift+R once to refresh old files.
+If folder dragging fails, upload the root files first. Then upload the contents of public into your repository's public folder and the contents of src into its src folder. Preserve public/assets and public/scramjet.
 
-Click **Open your browser** or the globe in the dock. Enter a website in the search bar. Scramjet is selected by default.
+## See the new entrance
 
-If GitHub asks whether to replace an existing file, replace it with the version from this package. Keep all your files at the repository root as shown below. Your other old demo files can remain. The new index page does not load them.
+Press Enter or click Enter Moonlight on the welcome screen. The title fades away, the scene eases forward, and the desktop and dock appear in sequence.
 
-## If folder dragging does not work
-
-Upload the root files first: Dockerfile, package.json, package-lock.json, README.md, LICENSE, and START-HERE.md.
-
-Then open `public` in GitHub and upload the CONTENTS of the extracted `public` folder. Preserve its `assets` and `scramjet` subfolders. Open `src` in GitHub and upload the contents of the extracted `src` folder.
-
-The file `public/index.html` must remain exactly at that path. Do not create `Scramjet-App/MOONLIGHT-OS-Render/public/index.html`.
+The welcome screen still appears once per browser-tab session. To replay it after updating, choose Personalize on the desktop, then Replay welcome animation. You can also open Welcome in the app launcher.
 
 ## What changed
 
-- Screenshot-guided CINE-inspired desktop with original MOONLIGHT OS branding.
-- Centered welcome screen, compact dock, weekday/time display, and right-side widgets.
-- Wallpaper studio with six presets, separate desktop/welcome backgrounds, and local image/video uploads (up to 20 MB).
-- Live clock, floating windows, minimize/restore, maximize, and a bottom dock.
-- Up to eight browser tabs. Minimized windows preserve their pages.
-- Scramjet runs inside MOONLIGHT OS. Its Wisp relay uses the SAME Render server.
-- MOONLIGHT OS Basic remains available for simple pages.
-- Ultraviolet stays marked as not installed.
-- Bookmarks and recent pages, local notes, app launcher, and quick links.
-- Galaxy, Midnight, Aurora, Ember, Glacier, and Void wallpaper choices, three accents, 12/24-hour clock, and reduced-motion support.
-- Google or DuckDuckGo search, local data export, and clear recent pages.
-- Responsive layout with a compact mobile dock.
-- No ChatGPT login or ChatGPT Sites connection is required.
+- Redesigned welcome screen with larger typography and a glowing Enter button.
+- A smooth transition from the welcome screen to the desktop.
+- Your original blue crescent and ocean picture, with animated water, soft reflections, subtle pointer movement, and stars.
+- A cleaner desktop with a larger clock, greetings, shortcuts, and open space around the moon.
+- A glass dock with animated icons, hover labels, and running indicators.
+- Matching browser tabs, address bar, new-tab page, notes, settings, wallpaper gallery, and app launcher.
+- Animated window opening and closing, with safe handling for rapid reopening.
+- Layouts for phones, tablets, and larger screens.
+- Live atmosphere and interface motion controls in Personalize.
 
-## Keep these Render settings
+Click Live atmosphere near the bottom of the desktop to switch between animated and still backgrounds. Your device's reduced-motion setting also stops animations.
+
+The ocean animation runs in your browser from the existing image. It does not require a video file or a new service. If your browser cannot run the graphics effect, the original picture remains visible. The atmosphere pauses when the tab is hidden.
+
+## Your Render settings
 
 Runtime: Docker
 Branch: main
 Root directory: blank
 Dockerfile path: ./Dockerfile
-No new environment variables are required.
 
-The app listens on the PORT supplied by Render and binds to 0.0.0.0. Render handles HTTPS. The Docker image uses Node 22. Do not switch this service to a static site: the proxy needs the Node server and WebSockets.
+Keep the service as a Node/Docker web service. The existing browser uses its server and WebSocket relay. No new environment variables or runtime dependencies are required.
 
-## Useful details
+Settings, notes, bookmarks, and wallpaper uploads stay on the same device and website address. The update retains the original local storage keys. Changing your website address does not transfer that browser data.
 
-This does not automatically copy your old ChatGPT Site’s browser data. Settings, notes, bookmarks, and history are stored locally on each website origin and each device. The original ChatGPT Site is unchanged.
+The browser still supports up to eight tabs, Scramjet, and Basic. This update does not change the proxy engines or the server configuration. Website compatibility still depends on the existing engines.
 
-The browser Close button hides its window and retains tabs for this session. Reloading the entire MOONLIGHT OS site starts new tabs. The recent-pages list lets you return to pages.
+## Checks completed
 
-A free Render service can sleep after inactivity. Its next visit can take around a minute to start. Website compatibility still varies. DRM-protected video, some sign-ins, and sites that reject proxies are not guaranteed to work.
+JavaScript syntax and local asset references passed. Nine simulated interaction checks passed for welcome focus, Enter timing, repeat clicks, reduced motion, unavailable storage, replay, and window transitions. The ocean shaders compiled, linked, and produced changing image frames.
 
-The supplied screenshots guided the welcome screen, wallpaper-led desktop, smaller dock, right sidebar, and wallpaper gallery. This remains an original MOONLIGHT OS design. The exact illustrated wallpapers in the video are not included. You can upload your own in Settings → Appearance.
+This package has not been deployed to your Render account. A real-browser visual review and live proxy browsing test were unavailable in this environment.
 
-The welcome screen appears once per browser-tab session. Select Welcome from the launcher to view it again. This is a welcome screen, not a password lock. Custom wallpaper media saves in IndexedDB on your device. The JSON data export does not include media. Videos play muted, and motion preferences are respected.
+## Moonlight atmosphere update
 
-The MOONLIGHT OS name does not automatically rename your Render URL. The same existing night-window.onrender.com address continues to work.
+This version adds a gentle ten-second moon pulse, a breathing cyan halo, slowly drifting clouds, and water reflections that brighten with the moon. Motion controls and reduced-motion support still apply.
 
-## If something fails
+Small doorway references appear in the original Enter icon, numbered browser-tab badges, and the line “Another door. Another discovery.” Main titles use a restrained Georgia serif style. Search fields and everyday controls retain the readable sans-serif font. These additions use original interface graphics and system fonts.
 
-- Build failed: open the latest Render deployment and send the first actual error line or a screenshot.
-- Old Scramjet demo still appears: check that the commit replaced `public/index.html`, wait for the latest deployment to show Live, then press Ctrl+Shift+R.
-- Engine files fail to load: confirm the Docker deployment installed dependencies. `/health` should show status `ok`.
-- A page stays loading: wait for Render to wake up and press the browser’s Reload button. Try a simple public page before testing complex sites.
-
-## Validation completed
-
-JavaScript syntax, HTTP route checks, asset loading, Basic input validation and HTML sanitization, and simulated DOM interactions for tabs, in-page engine routing, bookmarks, notes, themes, and window state passed. These checks did not include a real-browser visual review or a deployment to your Render account. Scramjet itself uses the same 1.1.0 engine version that worked in your current deployment.
+Install this ZIP using the same steps above. Refresh with Ctrl+Shift+R after deploying. To replay the entrance, choose Personalize, then Replay welcome animation.

@@ -1,6 +1,6 @@
 {
   "name": "moonlight-os",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "MOONLIGHT OS desktop browser with Scramjet and a same-host Wisp relay",
   "type": "module",
   "engines": {
@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "lint": "eslint ./src/",
     "lint:fix": "eslint ./src/ --fix",
-    "check": "node --check src/index.js && node --check src/basic.js && node --check public/app.js"
+    "check": "node --check src/index.js && node --check src/basic.js && node --check public/app.js && node --check public/atmosphere.js"
   },
   "keywords": [
     "proxy"
