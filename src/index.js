@@ -37,7 +37,7 @@ const fastify = Fastify({
 });
 
 fastify.get("/api/basic", basicRoute);
-fastify.get("/health", async () => ({ status: "ok", app: "KNIGHT-OS" }));
+fastify.get("/health", async () => ({ status: "ok", app: "MOONLIGHT OS" }));
 
 fastify.register(fastifyStatic, {
 	root: publicPath,
