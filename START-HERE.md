@@ -17,13 +17,16 @@ If folder dragging fails, upload the root files first. Then upload the contents 
 
 ## See the new entrance
 
-Press Enter or click Enter Moonlight on the welcome screen. The title fades away, the scene eases forward, and the desktop and dock appear in sequence.
+Press Enter or click the half-open blue-lit door. A synthesized hinge sound and soft chime accompany the opening. The view moves through the doorway, the moon fades in, its reflection brightens the moving ocean, and the desktop appears.
 
 The welcome screen still appears once per browser-tab session. To replay it after updating, choose Personalize on the desktop, then Replay welcome animation. You can also open Welcome in the app launcher.
 
 ## What changed
 
-- Redesigned welcome screen with larger typography and a glowing Enter button.
+- Dark entrance with an animated half-open door, blue light, and sound.
+- Show Desktop immediately hides every open window without closing your browser tabs.
+- Maximize fills the available desktop area and restores the previous window size.
+- Stronger pulsing moonlight and a staged reveal of its ocean reflection.
 - A smooth transition from the welcome screen to the desktop.
 - Your original blue crescent and ocean picture, with animated water, soft reflections, subtle pointer movement, and stars.
 - A cleaner desktop with a larger clock, greetings, shortcuts, and open space around the moon.
@@ -63,3 +66,7 @@ This version adds a gentle ten-second moon pulse, a breathing cyan halo, slowly 
 Small doorway references appear in the original Enter icon, numbered browser-tab badges, and the line “Another door. Another discovery.” Main titles use a restrained Georgia serif style. Search fields and everyday controls retain the readable sans-serif font. These additions use original interface graphics and system fonts.
 
 Install this ZIP using the same steps above. Refresh with Ctrl+Shift+R after deploying. To replay the entrance, choose Personalize, then Replay welcome animation.
+
+## Verification for this update
+
+JavaScript syntax checks, nine transition/state checks, and GPU shader compile/render checks passed. Full browser visual and click-through testing was blocked by the unavailable browser runtime. The sound is synthesized locally and starts only when you activate the door. Reduced-motion mode skips the travel animation.
