@@ -169,7 +169,7 @@ function draw(now) {
       gl.uniform2f(uniforms.resolution, width, height);
       gl.uniform2f(uniforms.pointer, smoothX, smoothY);
       gl.uniform1f(uniforms.time, (now / 1000) % 3600);
-      gl.uniform1f(uniforms.arrival,Math.min(1,Math.max(0,(now-arrivalStart-1100)/2700)));
+      gl.uniform1f(uniforms.arrival,Math.min(1,Math.max(0,(now-arrivalStart-1700)/3100)));
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       canvas.classList.add('ready');
     }

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030d18"><meta name="description" content="MOONLIGHT OS. Your own space to explore the web.">
-<title>MOONLIGHT OS</title><link rel="preload" as="image" href="/moonlight-ocean.png"><link rel="icon" type="image/svg+xml" href="/moonlight-logo.svg?v=4"><link rel="stylesheet" href="/app.css?v=moonlight6">
-<script src="/scram/scramjet.all.js" defer></script><script src="/baremux/index.js" defer></script><script src="/app.js?v=moonlight6" type="module"></script><script src="/atmosphere.js?v=moonlight6" type="module"></script>
+<title>MOONLIGHT OS</title><link rel="preload" as="image" href="/moonlight-ocean.png"><link rel="icon" type="image/svg+xml" href="/moonlight-logo.svg?v=4"><link rel="stylesheet" href="/app.css?v=moonlight7">
+<script src="/scram/scramjet.all.js" defer></script><script src="/baremux/index.js" defer></script><script src="/app.js?v=moonlight7" type="module"></script><script src="/atmosphere.js?v=moonlight7" type="module"></script>
 </head>
 <body class="booting">
 <div class="wallpaper" data-theme="moonlight" aria-hidden="true"><video id="desktop-video" muted playsinline loop hidden></video><div class="star-field"></div><div class="ocean-haze"></div></div><div class="grain" aria-hidden="true"></div>
@@ -35,7 +35,7 @@
 <div class="browser-toolbar"><div class="browser-nav"><button class="icon-button" data-action="back" title="Back" aria-label="Back"><i data-icon="back"></i></button><button class="icon-button" data-action="forward" title="Forward" aria-label="Forward"><i data-icon="forward"></i></button><button class="icon-button" data-action="reload" title="Reload" aria-label="Reload"><i data-icon="reload"></i></button><button class="icon-button" data-action="home" title="New tab page" aria-label="New tab page"><i data-icon="home"></i></button></div><form id="address-form" class="address-form"><i data-icon="search"></i><input id="address" aria-label="Website address or search" placeholder="Search the web or enter a URL" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="address-go" title="Go" aria-label="Go"><i data-icon="arrow"></i></button></form><button class="icon-button" data-action="bookmark" title="Bookmark this page" aria-label="Bookmark this page"><i data-icon="bookmark"></i></button><button class="icon-button" data-action="settings" title="Proxy settings" aria-label="Proxy settings"><i data-icon="settings"></i></button></div>
 <div id="browser-error" class="browser-error" role="alert" hidden><span></span><button data-action="dismiss-error" aria-label="Dismiss error"><i data-icon="close"></i></button></div>
 <div id="tab-views" class="tab-views"></div>
-<footer class="browser-status"><span><span class="status-dot"></span><b id="browser-engine">Scramjet</b><span id="page-status">Ready to explore</span></span><button data-action="settings">Engine settings <i data-icon="chevron"></i></button></footer>
+<footer class="browser-status"><div class="page-zoom" role="group" aria-label="Webpage zoom"><button data-action="zoom-out" aria-label="Zoom webpage out">−</button><button data-action="zoom-reset" id="page-zoom-label" aria-label="Reset webpage zoom">100%</button><button data-action="zoom-in" aria-label="Zoom webpage in">+</button></div><span><span class="status-dot"></span><b id="browser-engine">Scramjet</b><span id="page-status">Ready to explore</span></span><button data-action="settings">Engine settings <i data-icon="chevron"></i></button></footer>
 </section>
 <section id="panel-window" class="window panel-window" tabindex="-1" inert aria-label="Settings and tools" hidden>
 <div class="window-titlebar" data-drag="panel-window"><div class="window-label"><i id="panel-icon" data-icon="settings"></i><span id="panel-title">Settings</span></div><div class="window-controls"><button data-action="close-panel" title="Close" aria-label="Close panel"><i data-icon="close"></i></button></div></div><div id="panel-content" class="panel-content"></div>
@@ -45,11 +45,12 @@
 <section id="welcome-screen" class="welcome-screen" aria-label="Welcome to MOONLIGHT OS" aria-modal="true" role="dialog" aria-describedby="welcome-description">
   <div id="welcome-wallpaper" class="welcome-wallpaper" data-theme="moonlight" aria-hidden="true"><video id="welcome-video" muted playsinline loop hidden></video><div class="star-field"></div><div class="ocean-haze"></div></div>
   <div class="welcome-header"><span class="welcome-brand"><img src="/moonlight-logo.svg?v=4" alt=""> MOONLIGHT OS</span><span class="welcome-edition">YOUR SPACE, AFTER DARK <span>/ 02</span></span></div>
+  <div class="hotel-wall" aria-hidden="true"><span class="hotel-sconce left"></span><span class="hotel-sconce right"></span><span class="hotel-floor"></span><span class="hotel-fog"></span></div>
   <div class="welcome-content door-content">
     <p class="door-kicker">MOONLIGHT OS</p>
-    <button id="enter-desktop" data-action="enter" class="door-entry" aria-label="Open the door and enter Moonlight">
+    <button id="enter-desktop" data-action="enter" class="door-entry" aria-label="Open door 200 and enter Moonlight">
       <span class="door-spill" aria-hidden="true"></span>
-      <span class="door-frame" aria-hidden="true"><span class="door-light"></span><span class="door-leaf"><span class="door-panel upper"></span><span class="door-panel lower"></span><span class="door-handle"></span></span></span>
+      <span class="door-frame" aria-hidden="true"><span class="door-light"></span><span class="door-leaf"><span class="door-number">200</span><span class="door-panel upper"></span><span class="door-panel lower"></span><span class="door-handle"></span></span></span>
     </button>
     <p id="welcome-description">A light is waiting on the other side.</p>
     <small class="enter-hint">Open the door <span>·</span> press <kbd>Enter</kbd></small>
