@@ -3,6 +3,9 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = window.matchMedia('(pointer: fine)');
 const scenes = [];
 let frame = 0;
+let arrivalStart = -10000;
+let arrivalActive = false;
+document.addEventListener('moonlight:scene',()=>{if(document.body.classList.contains('entering')){if(!arrivalActive){arrivalStart=performance.now();arrivalActive=true;}}else arrivalActive=false;});
 let lastFrame = 0;
 let pointerX = 0;
 let pointerY = 0;
@@ -29,6 +32,7 @@ uniform vec2 resolution;
 uniform vec2 imageSize;
 uniform vec2 pointer;
 uniform float time;
+uniform float arrival;
 void main() {
   vec2 p = vec2(uv.x, 1.0 - uv.y);
   float viewportRatio = resolution.x / resolution.y;
@@ -59,7 +63,12 @@ void main() {
   float glow = exp(-moonRadius * 10.0);
   color *= 1.0 + moonMask * (breath - 0.5) * 0.055;
   color += vec3(0.012, 0.043, 0.068) * glow * (0.3 + breath * 0.7);
-  color += vec3(0.004, 0.014, 0.023) * reflection * water * breath;
+  color += vec3(0.024, 0.075, 0.12) * reflection * water * breath;
+  float moonReveal=smoothstep(0.22,0.8,arrival);
+  float waterReveal=smoothstep(0.4,1.0,arrival);
+  color *= mix(0.06,1.0,arrival);
+  color *= mix(1.0,moonReveal,moonMask);
+  color *= mix(1.0,waterReveal,reflection*water*.85);
   gl_FragColor = vec4(color, 1.0);
 }`;
 
@@ -107,7 +116,7 @@ function makeScene(surface, artwork) {
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, artwork);
     gl.uniform1i(gl.getUniformLocation(program, 'artwork'), 0);
     gl.uniform2f(gl.getUniformLocation(program, 'imageSize'), artwork.naturalWidth, artwork.naturalHeight);
-    const uniforms = Object.fromEntries(['resolution', 'pointer', 'time'].map(name => [name, gl.getUniformLocation(program, name)]));
+    const uniforms = Object.fromEntries(['resolution', 'pointer', 'time', 'arrival'].map(name => [name, gl.getUniformLocation(program, name)]));
     const scene = { surface, canvas, gl, uniforms, lost: false };
     canvas.addEventListener('webglcontextlost', event => {
       event.preventDefault();
@@ -160,6 +169,7 @@ function draw(now) {
       gl.uniform2f(uniforms.resolution, width, height);
       gl.uniform2f(uniforms.pointer, smoothX, smoothY);
       gl.uniform1f(uniforms.time, (now / 1000) % 3600);
+      gl.uniform1f(uniforms.arrival,Math.min(1,Math.max(0,(now-arrivalStart-1100)/2700)));
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       canvas.classList.add('ready');
     }

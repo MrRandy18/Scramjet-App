@@ -515,3 +515,37 @@ html[data-motion=off] *,html[data-motion=off] *::before,html[data-motion=off] *:
 .tab-select .tab-number { flex-shrink:0; font-family:var(--display-font); font-size:9px; font-variant-numeric:tabular-nums; letter-spacing:.8px; padding:3px 5px; border:1px solid #b6dfff26; border-radius:4px; color:#95b6cd; background:#04132355; }
 .tab.active .tab-number { border-color:rgba(var(--accent-rgb),.4); color:var(--accent); box-shadow:0 0 9px rgba(var(--accent-rgb),.07); }
 @media(max-width:540px) { .welcome-content h1 { font-size:clamp(28px,7.9vw,42px); letter-spacing:2px; } .desktop-day { font-size:14px; } .enter-button { font-size:13px; } .tab-select { gap:6px; padding-left:8px; } }
+
+/* Door arrival, v6. The door is real CSS geometry so its hinge can animate. */
+.system-bar{z-index:65}
+#browser-window.maximized{inset:64px 0 88px!important;width:100vw!important;height:calc(100dvh - 152px)!important;max-width:none!important;max-height:none!important;min-width:0;min-height:0;transform:none!important;border-radius:0;animation:none}
+#welcome-screen{background:#010308;overflow:hidden}
+#welcome-screen #welcome-wallpaper{opacity:0!important}
+#welcome-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,#0a213944,transparent 55%);pointer-events:none}
+#welcome-screen .door-content{padding:0;position:relative;display:flex;flex-direction:column;align-items:center}
+.door-kicker{font-size:11px!important;letter-spacing:6px!important;color:#9aabbc!important;margin:0 0 24px!important}
+.door-entry{position:relative;width:240px;height:min(49vh,390px);min-height:180px;perspective:900px;overflow:visible;padding:0;isolation:isolate;flex-shrink:0}
+.door-entry:hover,.door-entry:active:not(:disabled){transform:none;background:none}
+.door-entry:disabled{opacity:1}
+.door-frame{position:absolute;inset:0 22px;border:8px solid #131a24;box-shadow:0 0 0 2px #23394d,0 0 70px #399aff25,inset 0 0 22px #1b6da8;perspective:850px;background:#78cfff;display:block}
+.door-light{position:absolute;inset:0;background:linear-gradient(160deg,#c7eeff,#74c6ff 55%,#205892);box-shadow:0 0 65px #62baff99;animation:door-breathe 5s ease-in-out infinite}
+.door-leaf{position:absolute;inset:0;background:linear-gradient(110deg,#080c12,#152333);border:2px solid #2c4055;transform-origin:left center;transform:rotateY(-48deg);box-shadow:4px 0 9px #020713;transition:transform 1.7s cubic-bezier(.25,.65,.2,1);transform-style:preserve-3d}
+.door-panel{position:absolute;left:14%;right:14%;border:2px solid #26384a;box-shadow:inset 0 3px 13px #0008;background:#0b131e}
+.door-panel.upper{top:9%;height:44%}.door-panel.lower{bottom:9%;height:27%}
+.door-handle{position:absolute;right:9%;top:58%;width:7px;height:27px;background:linear-gradient(90deg,#46647c,#bcd9ed,#5c7892);border-radius:4px;box-shadow:0 0 6px #6bc8ff66}
+.door-spill{position:absolute;left:-90px;right:-90px;top:90%;height:34vh;background:linear-gradient(#78cfff55,transparent);clip-path:polygon(32% 0,67% 0,100% 100%,0 100%);filter:blur(10px);pointer-events:none;opacity:.6}
+.door-content #welcome-description{margin:28px 0 0;font-size:12px;color:#9bb0c2}
+.door-content .enter-hint{margin-top:12px}
+#welcome-screen.is-leaving{animation:door-world-exit 2.7s ease-in both}
+#welcome-screen.is-leaving .welcome-content{animation:walk-through 2.7s cubic-bezier(.4,0,.25,1) both}
+#welcome-screen.is-leaving .door-leaf{transform:rotateY(-108deg)}
+#welcome-screen.is-leaving .door-content>p,#welcome-screen.is-leaving .enter-hint{opacity:0;transition:opacity .4s}
+body.entering .desktop-title,body.entering .desktop-launch,body.entering .desktop-widgets,body.entering .system-bar,body.entering .dock{animation-delay:2.8s}
+body.entering>.wallpaper{animation:ocean-awakens 4.3s ease-out both}
+@keyframes door-breathe{50%{filter:brightness(1.13)}}
+@keyframes walk-through{0%,32%{transform:scale(1)}85%,100%{transform:scale(4.8);filter:blur(4px)}}
+@keyframes door-world-exit{0%,53%{opacity:1}100%{opacity:0}}
+@keyframes ocean-awakens{0%,27%{filter:brightness(.06)}63%{filter:brightness(.6)}100%{filter:brightness(1)}}
+@media(max-height:580px){.door-kicker{display:none}.door-entry{height:45vh}.door-content #welcome-description{margin-top:14px}.welcome-footer{display:none}}
+@media(prefers-reduced-motion:reduce){.door-light{animation:none!important}}
+html[data-motion=off] .door-light{animation:none!important}

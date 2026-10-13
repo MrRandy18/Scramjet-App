@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030d18"><meta name="description" content="MOONLIGHT OS. Your own space to explore the web.">
-<title>MOONLIGHT OS</title><link rel="preload" as="image" href="/moonlight-ocean.png"><link rel="icon" type="image/svg+xml" href="/moonlight-logo.svg?v=4"><link rel="stylesheet" href="/app.css?v=moonlight5">
-<script src="/scram/scramjet.all.js" defer></script><script src="/baremux/index.js" defer></script><script src="/app.js?v=moonlight5" type="module"></script><script src="/atmosphere.js?v=moonlight5" type="module"></script>
+<title>MOONLIGHT OS</title><link rel="preload" as="image" href="/moonlight-ocean.png"><link rel="icon" type="image/svg+xml" href="/moonlight-logo.svg?v=4"><link rel="stylesheet" href="/app.css?v=moonlight6">
+<script src="/scram/scramjet.all.js" defer></script><script src="/baremux/index.js" defer></script><script src="/app.js?v=moonlight6" type="module"></script><script src="/atmosphere.js?v=moonlight6" type="module"></script>
 </head>
 <body class="booting">
 <div class="wallpaper" data-theme="moonlight" aria-hidden="true"><video id="desktop-video" muted playsinline loop hidden></video><div class="star-field"></div><div class="ocean-haze"></div></div><div class="grain" aria-hidden="true"></div>
@@ -45,12 +45,14 @@
 <section id="welcome-screen" class="welcome-screen" aria-label="Welcome to MOONLIGHT OS" aria-modal="true" role="dialog" aria-describedby="welcome-description">
   <div id="welcome-wallpaper" class="welcome-wallpaper" data-theme="moonlight" aria-hidden="true"><video id="welcome-video" muted playsinline loop hidden></video><div class="star-field"></div><div class="ocean-haze"></div></div>
   <div class="welcome-header"><span class="welcome-brand"><img src="/moonlight-logo.svg?v=4" alt=""> MOONLIGHT OS</span><span class="welcome-edition">YOUR SPACE, AFTER DARK <span>/ 02</span></span></div>
-  <div class="welcome-content">
-    <div class="welcome-eyebrow"><span></span> A LIGHT IN THE DARK <span></span></div>
-    <h1>MOONLIGHT<span class="welcome-os">OS</span></h1>
-    <p id="welcome-description">Follow the light. Make yourself at home.</p>
-    <button id="enter-desktop" data-action="enter" class="enter-button"><span>Enter Moonlight</span><i data-icon="doorway"></i></button>
-    <small class="enter-hint">or press <kbd>Enter</kbd> to begin</small>
+  <div class="welcome-content door-content">
+    <p class="door-kicker">MOONLIGHT OS</p>
+    <button id="enter-desktop" data-action="enter" class="door-entry" aria-label="Open the door and enter Moonlight">
+      <span class="door-spill" aria-hidden="true"></span>
+      <span class="door-frame" aria-hidden="true"><span class="door-light"></span><span class="door-leaf"><span class="door-panel upper"></span><span class="door-panel lower"></span><span class="door-handle"></span></span></span>
+    </button>
+    <p id="welcome-description">A light is waiting on the other side.</p>
+    <small class="enter-hint">Open the door <span>·</span> press <kbd>Enter</kbd></small>
   </div>
   <div class="welcome-footer"><span><span class="status-dot"></span> A SPACE OF YOUR OWN</span><span>MOONLIGHT / DESKTOP EDITION</span></div>
 </section>
