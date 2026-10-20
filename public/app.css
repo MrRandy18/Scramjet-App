@@ -587,3 +587,17 @@ body.entering .desktop-title,body.entering .desktop-launch,body.entering .deskto
 @media(max-width:540px){.hotel-sconce.left{left:8%}.hotel-sconce.right{right:8%}.browser-status #page-status{display:none}.door-entry{width:220px}.door-number{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.hotel-fog,.hotel-sconce{animation:none!important}}
 html[data-motion=off] .hotel-fog,html[data-motion=off] .hotel-sconce{animation:none!important}
+
+/* Browser is an app page, independent of desktop window geometry. */
+body.browser-app-open .system-bar,body.browser-app-open #desktop,body.browser-app-open .dock,body.browser-app-open #launcher{display:none!important}
+#browser-window{inset:0!important;width:100%!important;height:100vh!important;height:100dvh!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;transform:none!important;border:0;border-radius:0!important;resize:none!important;animation:none!important;box-shadow:none;display:flex;flex-direction:column}
+#browser-window[hidden]{display:none!important}
+#browser-window .browser-app-header{height:52px;padding:0 16px;cursor:default;touch-action:auto;flex:0 0 52px}
+.back-to-menu{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid #9bdfff35;border-radius:10px;background:#9bdfff0b;color:#d4f1ff;font-size:12px}
+.back-to-menu svg{width:17px;height:17px}
+.back-to-menu:hover{background:#9bdfff20}
+.back-to-menu:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#browser-window .tab-strip{flex-shrink:0}
+#browser-window .browser-status{flex-shrink:0}
+#browser-window .new-tab-page{padding-top:clamp(24px,8vh,90px)}
+@media(max-width:540px){#browser-window .browser-app-header{padding:0 8px}#browser-window .browser-app-header .window-label{font-size:9px;gap:5px}.back-to-menu{padding:9px 8px;font-size:11px}}
