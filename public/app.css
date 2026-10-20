@@ -601,3 +601,28 @@ body.browser-app-open .system-bar,body.browser-app-open #desktop,body.browser-ap
 #browser-window .browser-status{flex-shrink:0}
 #browser-window .new-tab-page{padding-top:clamp(24px,8vh,90px)}
 @media(max-width:540px){#browser-window .browser-app-header{padding:0 8px}#browser-window .browser-app-header .window-label{font-size:9px;gap:5px}.back-to-menu{padding:9px 8px;font-size:11px}}
+
+/* Three ocean identities. The desktop selection controls the app branding. */
+:root{--ocean-art:url('/moonlight-ocean.png');--ocean-light:105,211,255}
+html[data-identity=starlight]{--ocean-art:url('/starlight-ocean.png');--ocean-light:255,213,78;--accent:#ffdf76;--accent-rgb:255,223,118}
+html[data-identity=mischevious]{--ocean-art:url('/mischevious-ocean.png');--ocean-light:255,55,70;--accent:#ff7b83;--accent-rgb:255,123,131}
+[data-theme=starlight],.wallpaper-choice[data-wallpaper=starlight]{background-image:url('/starlight-ocean.png');--ocean-light:255,213,78}
+[data-theme=mischevious],.wallpaper-choice[data-wallpaper=mischevious]{background-image:url('/mischevious-ocean.png');--ocean-light:255,55,70}
+[data-theme=moonlight]{--ocean-light:105,211,255}
+.scene-thumbnail{background-image:var(--ocean-art)}
+#browser-window .new-tab-page{background-image:linear-gradient(#03070b66,#03070bb3),var(--ocean-art);position:relative;isolation:isolate}
+:is(.wallpaper,.welcome-wallpaper):is([data-theme=moonlight],[data-theme=starlight],[data-theme=mischevious])::after,
+html:is([data-wallpaper=moonlight],[data-wallpaper=starlight],[data-wallpaper=mischevious]) .new-tab-page::before{
+ content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+ background:radial-gradient(ellipse at 50% 24%,rgba(var(--ocean-light),.65),transparent 23%),radial-gradient(ellipse at 50% 75%,rgba(var(--ocean-light),.48),transparent 29%);
+ mix-blend-mode:screen;animation:ocean-light-pulse 4.8s ease-in-out infinite;opacity:.22
+}
+.new-tab-page::before{z-index:-1!important}
+@keyframes ocean-light-pulse{0%,100%{opacity:.12;filter:brightness(.8)}50%{opacity:.95;filter:brightness(1.4)}}
+[data-theme=starlight] .star-field span{background:#fff0b0;box-shadow:0 0 9px #ffdc65}
+[data-theme=mischevious] .star-field span{background:#ffa2a8;box-shadow:0 0 9px #ff3a4b}
+:is([data-theme=starlight],[data-theme=mischevious]) .ocean-haze{background:radial-gradient(ellipse at 50% 13%,rgba(var(--ocean-light),.4),transparent 36%)}
+html[data-motion=off] :is(.wallpaper,.welcome-wallpaper)::after,html[data-live-wallpaper=off] :is(.wallpaper,.welcome-wallpaper)::after,
+html[data-motion=off] .new-tab-page::before,html[data-live-wallpaper=off] .new-tab-page::before{animation:none!important;opacity:.25}
+body.page-paused :is(.wallpaper,.welcome-wallpaper)::after,body.page-paused .new-tab-page::before{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){:is(.wallpaper,.welcome-wallpaper)::after,.new-tab-page::before{animation:none!important;opacity:.25}}
