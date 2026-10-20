@@ -549,3 +549,55 @@ body.entering>.wallpaper{animation:ocean-awakens 4.3s ease-out both}
 @media(max-height:580px){.door-kicker{display:none}.door-entry{height:45vh}.door-content #welcome-description{margin-top:14px}.welcome-footer{display:none}}
 @media(prefers-reduced-motion:reduce){.door-light{animation:none!important}}
 html[data-motion=off] .door-light{animation:none!important}
+
+/* Door 200: hotel panelling, brass hardware, blue light and a staged approach. */
+.hotel-wall{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 44%,transparent 10%,#000b 78%),repeating-linear-gradient(90deg,#1d1517 0,#1d1517 2px,#181217 3px,#181217 90px);opacity:.85;overflow:hidden}
+.hotel-wall:after{content:'';position:absolute;left:0;right:0;top:67%;height:8px;background:linear-gradient(#4b3330,#1f1719);box-shadow:0 8px 0 #0c0a10,0 16px 30px #0009}
+.hotel-floor{position:absolute;left:-25%;right:-25%;top:68%;bottom:-30%;background:repeating-linear-gradient(90deg,transparent 0 99px,#5d464b33 100px 102px),repeating-linear-gradient(0deg,#19141d 0 78px,#35252e 79px 81px);transform:perspective(350px) rotateX(46deg);transform-origin:top;box-shadow:inset 0 55px 75px #000}
+.hotel-sconce{position:absolute;top:37%;width:27px;height:68px;border:5px solid #6f5637;border-radius:15px 15px 5px 5px;background:linear-gradient(90deg,#543d20,#cda86a,#604222);box-shadow:0 0 65px 28px #d38a3920,0 0 10px #e2b56a55;animation:sconce-flicker 8s linear infinite}
+.hotel-sconce.left{left:calc(50% - 245px)}.hotel-sconce.right{right:calc(50% - 245px);animation-delay:-3s}
+.hotel-fog{position:absolute;left:-40%;right:-40%;bottom:4%;height:29%;background:radial-gradient(ellipse,#5794b81a,transparent 60%);filter:blur(18px);animation:hotel-drift 18s ease-in-out infinite alternate}
+.door-frame{border:11px solid #30232a;box-shadow:0 0 0 2px #7e6043,0 0 0 9px #1c151d,0 0 90px #2889d035;inset:0 16px}
+.door-leaf{background:repeating-linear-gradient(92deg,#30202a 0,#392731 3px,#30232b 5px,#39252c 13px);border:3px solid #79563b;transform:rotateY(-39deg);transition:transform 2.15s cubic-bezier(.33,.02,.19,1) .24s}
+.door-panel{border:3px ridge #604331;background:linear-gradient(100deg,#23192299,#60403333);box-shadow:inset 0 0 14px #000a}
+.door-panel.upper{top:27%;height:27%}.door-panel.lower{bottom:9%;height:29%}
+.door-number{position:absolute;top:9%;left:23%;width:54%;padding:7px 0;border-radius:50%;border:3px ridge #b69460;background:linear-gradient(#37281e,#181414);color:#e7d2a8;font:600 27px Georgia,serif;text-shadow:0 2px 2px #000;box-shadow:0 5px 8px #0008;letter-spacing:2px}
+.door-handle{background:linear-gradient(90deg,#66502e,#ead5a0,#8b6c3f);transform-origin:50% 20%}
+#welcome-screen.is-leaving .door-handle{animation:handle-turn .65s ease-in-out both}
+#welcome-screen.is-leaving .welcome-content{animation:hotel-approach 3.6s cubic-bezier(.42,0,.24,1) both}
+#welcome-screen.is-leaving{animation:hotel-fade 3.6s ease-in both}
+#welcome-screen.is-leaving .hotel-wall{animation:hallway-pass 3.6s ease-in both}
+#welcome-screen.is-leaving .door-leaf{transform:rotateY(-112deg)}
+#welcome-screen.is-leaving .door-spill{animation:light-spreads 2.6s ease-out both}
+body.entering>.wallpaper{animation:moonrise-200 5.2s ease-out both}
+body.entering .desktop-title,body.entering .desktop-launch,body.entering .desktop-widgets,body.entering .system-bar,body.entering .dock{animation-delay:3.9s}
+@keyframes handle-turn{45%,80%{transform:rotate(-28deg)}100%{transform:rotate(0)}}
+@keyframes hotel-approach{0%,16%{transform:translateY(0) scale(1)}45%{transform:translateY(3px) scale(1.12)}100%{transform:translateY(8vh) scale(6.5);filter:blur(2px)}}
+@keyframes hotel-fade{0%,67%{opacity:1}100%{opacity:0}}
+@keyframes hallway-pass{0%,20%{transform:scale(1)}100%{transform:scale(2);opacity:0}}
+@keyframes light-spreads{to{opacity:1;transform:scaleX(2);filter:blur(20px)}}
+@keyframes moonrise-200{0%,31%{filter:brightness(.02)}62%{filter:brightness(.48)}100%{filter:brightness(1)}}
+@keyframes sconce-flicker{0%,94%,98%,100%{opacity:.8}95%,97%{opacity:.55}}
+@keyframes hotel-drift{to{transform:translateX(12%)}}
+.page-zoom{display:flex;align-items:center;gap:6px;margin-right:auto}.page-zoom button{min-width:25px;padding:3px 5px;font-size:12px}.page-zoom button:hover{background:#b4dfff22;border-radius:4px}
+#browser-window.maximized{bottom:auto!important;right:auto!important;resize:none!important}
+#browser-window .tab-views{width:100%;flex:1 1 0;min-height:0}
+#browser-window .tab-view{width:100%;height:100%}
+#browser-window .tab-view iframe{max-width:none;max-height:none}
+@media(max-width:540px){.hotel-sconce.left{left:8%}.hotel-sconce.right{right:8%}.browser-status #page-status{display:none}.door-entry{width:220px}.door-number{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.hotel-fog,.hotel-sconce{animation:none!important}}
+html[data-motion=off] .hotel-fog,html[data-motion=off] .hotel-sconce{animation:none!important}
+
+/* Browser is an app page, independent of desktop window geometry. */
+body.browser-app-open .system-bar,body.browser-app-open #desktop,body.browser-app-open .dock,body.browser-app-open #launcher{display:none!important}
+#browser-window{inset:0!important;width:100%!important;height:100vh!important;height:100dvh!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;transform:none!important;border:0;border-radius:0!important;resize:none!important;animation:none!important;box-shadow:none;display:flex;flex-direction:column}
+#browser-window[hidden]{display:none!important}
+#browser-window .browser-app-header{height:52px;padding:0 16px;cursor:default;touch-action:auto;flex:0 0 52px}
+.back-to-menu{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid #9bdfff35;border-radius:10px;background:#9bdfff0b;color:#d4f1ff;font-size:12px}
+.back-to-menu svg{width:17px;height:17px}
+.back-to-menu:hover{background:#9bdfff20}
+.back-to-menu:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#browser-window .tab-strip{flex-shrink:0}
+#browser-window .browser-status{flex-shrink:0}
+#browser-window .new-tab-page{padding-top:clamp(24px,8vh,90px)}
+@media(max-width:540px){#browser-window .browser-app-header{padding:0 8px}#browser-window .browser-app-header .window-label{font-size:9px;gap:5px}.back-to-menu{padding:9px 8px;font-size:11px}}
